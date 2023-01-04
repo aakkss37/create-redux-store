@@ -1,10 +1,12 @@
-import redux from 'redux';
+//import redux from 'redux';
+import { legacy_createStore as createStore } from 'redux'; // ****AS "createStore"FNCTION IS DEPRICIATED.. WE CAN NOT USE createStore FUNCTION... INDTED I FOUND AN ALTERNATE SOLUTION ON STACKOVERFLOW.. TO USE ***** //
 
 
+ 
 const counterReducer = (previousState = {count: 0}, action)=> { // --> 2. reducer function.. having 2 parameter.. 1) previous state 2) action... 
 																//		  and reducer function always return a new updated state.
 	if (action.type === "increment") {
-		return {
+		return {  
 			count: previousState.count + 1
 		};
 	}								
@@ -16,7 +18,7 @@ const counterReducer = (previousState = {count: 0}, action)=> { // --> 2. reduce
 	return previousState;
 };
 
-const store = redux.createStore(counterReducer);  //--> 1. creating redux store using createStore() function... which takes a reducer function as a parameter.
+const store = createStore(counterReducer);  //--> 1. creating redux store using createStore() function... which takes a reducer function as a parameter.
 console.log(store.getState());
 
 
